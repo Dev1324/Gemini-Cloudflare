@@ -1,6 +1,6 @@
 import { AI } from "google/generative-ai";
 
-let API_KEY = "YOUR_REAL_API_KEY";
+let API_KEY = "AIzaSyDgfjFAKlr8LdyBbM-FiWTkNxYBRpDmlcM";
 
 export default {
   async fetch(request, env) {
