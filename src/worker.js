@@ -6,7 +6,7 @@ let API_KEY = "a";
 export default {
   async fetch(request, env) {
     try {
-      key = env.API_KEY || API_KEY;
+      key = env.key || API_KEY;
       const ai = new AI(key);
       const model = ai.getGenerativeModel({ model: "gemini-1.5-flash" });
       const prompt = "Hi, How are you?";
