@@ -1,4 +1,4 @@
-import { AI } from "google/generative-ai";
+import { GoogleGenerativeAI } from "google/generative-ai";
 
 let API_KEY = "AIzaSyDgfjFAKlr8LdyBbM-FiWTkNxYBRpDmlcM";
 
@@ -6,9 +6,10 @@ export default {
   async fetch(request, env) {
     try {
       const key = env.key || API_KEY;
-      const ai = new AI(key);
-      const model = ai.getGenerativeModel({ model: "gemini-1.5-flash" });
-      const prompt = "Hi, How are you?";
+      const genAI = new GoogleGenerativeAI(key);
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+      const prompt = "Explain how AI works";
       const result = await model.generateContent(prompt);
 
       if (result && result.response) {
