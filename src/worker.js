@@ -1,16 +1,17 @@
 import { AI } from "google/generative-ai";
 
-const API_KEY = "AIzaSyDgfjFAKlr8LdyBbM-FiWTkNxYBRpDmlcM";
+
+let API_KEY = "a";
 
 export default {
-  async fetch(request) {
+  async fetch(request, env) {
     try {
-      const ai = new AI(API_KEY);
+      key = env.API_KEY || API_KEY;
+      const ai = new AI(key);
       const model = ai.getGenerativeModel({ model: "gemini-1.5-flash" });
       const prompt = "Hi, How are you?";
       const result = await model.generateContent(prompt);
 
-      // Ensure we have a valid response
       if (result && result.response) {
         return new Response(result.response.text, {
           status: 200,
