@@ -1,12 +1,11 @@
 import { AI } from "google/generative-ai";
 
-
-let API_KEY = "a";
+let API_KEY = "YOUR_REAL_API_KEY";
 
 export default {
   async fetch(request, env) {
     try {
-      key = env.key || API_KEY;
+      const key = env.key || API_KEY;
       const ai = new AI(key);
       const model = ai.getGenerativeModel({ model: "gemini-1.5-flash" });
       const prompt = "Hi, How are you?";
@@ -22,7 +21,7 @@ export default {
       }
     } catch (error) {
       console.error("Error generating text:", error);
-      return new Response("Internal Server Error", { status: 500 });
+      return new Response(`Error: ${error.message}`, { status: 500 });
     }
   },
 };
